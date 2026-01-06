@@ -1,0 +1,102 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Cinzel:wght@400;600;700&display=swap');
+
+:root {
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-display: 'Cinzel', serif;
+  
+  /* Light Mode */
+  --background: #faf8f5;
+  --foreground: #1a1714;
+  --card: #ffffff;
+  --card-foreground: #1a1714;
+  --primary: #1a1714;
+  --primary-foreground: #ffffff;
+  --secondary: #f5f3f0;
+  --secondary-foreground: #1a1714;
+  --muted: #e8e6e3;
+  --muted-foreground: #6b6762;
+  --border: rgba(26, 23, 20, 0.1);
+  --input-background: #f5f3f0;
+  
+  /* Gold System */
+  --gold-primary: #d4af37;
+  --gold-secondary: #c9a961;
+  --gold-muted: #e8dcc0;
+  --gold-dark: #a67c00;
+  
+  --radius: 0.75rem;
+}
+
+.dark {
+  --background: #0a0908;
+  --foreground: #f5f3f0;
+  --card: #1a1714;
+  --card-foreground: #f5f3f0;
+  --primary: #f5f3f0;
+  --primary-foreground: #1a1714;
+  --secondary: #2a2520;
+  --secondary-foreground: #f5f3f0;
+  --muted: #2a2520;
+  --muted-foreground: #9a9590;
+  --border: rgba(201, 169, 97, 0.15);
+  --input-background: rgba(201, 169, 97, 0.1);
+}
+
+@layer base {
+  * { @apply border-border; }
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-sans);
+  }
+  h1, h2 { font-family: var(--font-display); }
+}
+
+@layer utilities {
+  .gold-shimmer {
+    position: relative;
+    overflow: hidden;
+  }
+  .gold-shimmer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.3), transparent);
+    animation: shimmer 3s infinite;
+  }
+  @keyframes shimmer {
+    to { left: 100%; }
+  }
+  .gold-glow {
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+  }
+  .live-pulse {
+    animation: live-pulse 2s ease-in-out infinite;
+  }
+  @keyframes live-pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.7; transform: scale(1.05); }
+  }
+  .texture-overlay {
+    position: relative;
+  }
+  .texture-overlay::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, transparent 25%, rgba(212, 175, 55, 0.02) 25%, rgba(212, 175, 55, 0.02) 50%, transparent 50%, transparent 75%, rgba(212, 175, 55, 0.02) 75%);
+    background-size: 8px 8px;
+    opacity: 0.5;
+    pointer-events: none;
+  }
+  .dark .texture-overlay::before {
+    background: linear-gradient(135deg, transparent 25%, rgba(212, 175, 55, 0.03) 25%, rgba(212, 175, 55, 0.03) 50%, transparent 50%, transparent 75%, rgba(212, 175, 55, 0.03) 75%);
+  }
+}
+
