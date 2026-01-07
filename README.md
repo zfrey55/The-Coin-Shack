@@ -102,12 +102,11 @@ For detailed deployment instructions, see [DEPLOYMENT.md](./DEPLOYMENT.md)
 
 ## Documentation
 
-- **[Quick Start](./QUICK_START.md)** ⚡ - Get started in 5 minutes
-- [Local Testing Guide](./LOCAL_TESTING.md) - How to test locally with mock data
 - [API Documentation](./API.md) - Complete API reference
-- [Deployment Guide](./DEPLOYMENT.md) - How to deploy to Netlify
-- [Firestore Setup](./FIRESTORE_SETUP.md) - Setting up Google Firestore
-- [Mobile App Setup](./MOBILE_SETUP.md) - iOS & Android app development
+- [Deployment](./DEPLOYMENT.md) - Netlify deployment
+- [Local Testing](./LOCAL_TESTING.md) - Local development with mock data
+- [Firestore Setup](./FIRESTORE_SETUP.md) - Google Firestore configuration
+- [Mobile App](./MOBILE_SETUP.md) - iOS & Android development
 - [Production Checklist](./PRODUCTION_CHECKLIST.md) - Pre-launch checklist
 
 ## License
