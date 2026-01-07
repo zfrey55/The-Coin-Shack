@@ -1,5 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  output: 'standalone',
   images: {
     remotePatterns: [
       {
@@ -20,10 +21,6 @@ const nextConfig = {
   compress: true,
   reactStrictMode: true,
   swcMinify: true,
-  // Environment variable validation
-  env: {
-    CUSTOM_KEY: process.env.CUSTOM_KEY,
-  },
 }
 
 module.exports = nextConfig
