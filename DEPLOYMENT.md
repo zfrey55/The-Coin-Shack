@@ -1,56 +1,25 @@
-# Deployment Guide for The Coin Shack - Netlify & Firestore
+# Deployment Guide
 
-Your application is configured for deployment to Netlify with Google Firestore integration.
+This project is configured for automatic deployment to Netlify.
 
-## ✅ Pre-Deployment Checklist
+## 🚀 Auto-Deployment
 
-- ✅ Build verified successfully
-- ✅ Git repository initialized
-- ✅ Netlify configuration created (`netlify.toml`)
-- ✅ Firebase/Firestore dependencies installed
-- ✅ Firestore integration utilities created
+**Already Configured:**
+- ✅ GitHub Actions workflow auto-deploys on every push
+- ✅ Netlify integration connected
+- ✅ Build and deployment automated
 
-## 🚀 Deploy to Netlify
+Every push to `main` automatically:
+1. Builds the project
+2. Deploys to Netlify production
+3. Updates your live site
 
-### Option 1: Deploy via Netlify CLI (Recommended)
+## 📋 Manual Deployment (if needed)
 
-1. **Install Netlify CLI globally (if not already installed):**
-   ```bash
-   npm install -g netlify-cli
-   ```
+### Via Netlify Dashboard
 
-2. **Login to Netlify:**
-   ```bash
-   netlify login
-   ```
-   This will open a browser window for authentication.
-
-3. **Initialize and deploy:**
-   ```bash
-   netlify init
-   ```
-   Follow the prompts:
-   - Create & configure a new site? **Yes**
-   - Team: Select your team
-   - Site name: `the-coin-shack` (or your preferred name)
-   - Build command: `npm run build` (press Enter)
-   - Directory to deploy: `.next` (press Enter)
-
-4. **Deploy to production:**
-   ```bash
-   netlify deploy --prod
-   ```
-
-### Option 2: Deploy via Netlify Web Interface
-
-1. Go to [app.netlify.com](https://app.netlify.com) and sign in
-2. Click "Add new site" → "Import an existing project"
-3. Connect to your Git provider (GitHub, GitLab, or Bitbucket)
-   - If you haven't pushed to Git yet, see Git Setup below
-4. Configure build settings:
-   - Build command: `npm run build`
-   - Publish directory: `.next`
-5. Click "Deploy site"
+1. Go to [app.netlify.com](https://app.netlify.com)
+2. Site will auto-deploy on push, or manually trigger deploy
 
 ## 🔥 Google Firestore Setup
 
@@ -168,85 +137,12 @@ Your Firestore database should have these collections:
 
 You can create them manually or let them be created automatically when you first write data.
 
-## 📝 Git Setup (Recommended)
-
-1. **Configure Git (one-time):**
-   ```bash
-   git config user.email "your-email@example.com"
-   git config user.name "Your Name"
-   ```
-
-2. **Create initial commit:**
-   ```bash
-   git add .
-   git commit -m "Initial commit - ready for deployment"
-   ```
-
-3. **Push to GitHub/GitLab/Bitbucket:**
-   ```bash
-   git remote add origin https://github.com/yourusername/the-coin-shack.git
-   git branch -M main
-   git push -u origin main
-   ```
-
-4. **Connect to Netlify:**
-   - In Netlify, import from your Git repository
-   - This enables automatic deployments on every push
-
-## 🔄 Using Firestore in Your API Routes
-
-Your API routes are currently using mock data. To switch to Firestore:
-
-1. Update each API route file (in `app/api/*/route.ts`)
-2. Replace mock data imports with Firestore functions:
-
-**Example - `app/api/hosts/route.ts`:**
-```typescript
-import { getHosts } from '@/lib/firestore';
-import { NextResponse } from 'next/server';
-
-export async function GET() {
-  try {
-    const hosts = await getHosts();
-    return NextResponse.json(hosts, {
-      headers: {
-        'Cache-Control': 'public, s-maxage=60, stale-while-revalidate=300',
-      },
-    });
-  } catch (error) {
-    console.error('Error fetching hosts:', error);
-    return NextResponse.json({ error: 'Failed to fetch hosts' }, { status: 500 });
-  }
-}
-```
-
-Apply similar changes to:
-- `app/api/streams/route.ts`
-- `app/api/games/route.ts`
-- `app/api/products/route.ts`
-- `app/api/posts/route.ts`
-- `app/api/pricing/route.ts`
-
-## 🎯 Quick Deploy Commands
-
-```bash
-# Login (one-time)
-netlify login
-
-# Deploy to production
-netlify deploy --prod
-
-# Or build and deploy
-npm run build && netlify deploy --prod
-```
 
 ## 📊 Build Configuration
 
-Your `netlify.toml` is configured with:
 - Build command: `npm run build`
 - Publish directory: `.next`
 - Node version: 20
-- Next.js plugin: `@netlify/plugin-nextjs` (auto-installed by Netlify)
 
 ## 🐛 Troubleshooting
 
