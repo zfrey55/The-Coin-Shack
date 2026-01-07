@@ -9,7 +9,10 @@
     "lint": "next lint",
     "generate-secret": "node scripts/generate-secret.js",
     "check-env": "node scripts/check-env.js",
-    "prepare-deploy": "npm run check-env && npm run build"
+    "prepare-deploy": "npm run check-env && npm run build",
+    "commit": "git add -A && git commit -m",
+    "push": "git push origin main",
+    "commit-push": "git add -A && git commit -m \"$npm_config_message\" && git push origin main"
   },
   "dependencies": {
     "@stripe/stripe-js": "^2.4.0",
