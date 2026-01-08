@@ -4,7 +4,7 @@ import { Home, Compass, ShoppingBag, Calendar, User } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 const navItems = [
-  { id: 'feed', icon: Home, label: 'Feed', path: '/' },
+  { id: 'feed', icon: Home, label: 'Feed', path: '/feed' },
   { id: 'explore', icon: Compass, label: 'Explore', path: '/explore' },
   { id: 'products', icon: ShoppingBag, label: 'Products', path: '/commerce' },
   { id: 'shows', icon: Calendar, label: 'Shows', path: '/schedule' },
@@ -26,10 +26,11 @@ export function BottomNav() {
   }
   
   const isActive = (itemPath: string) => {
-    if (itemPath === '/') {
-      return pathname === '/';
+    // Special case: root path should also match feed
+    if (pathname === '/' && itemPath === '/feed') {
+      return true;
     }
-    return pathname?.startsWith(itemPath) || false;
+    return pathname === itemPath || pathname?.startsWith(itemPath + '/');
   };
   
   return (

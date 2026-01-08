@@ -1,6 +1,6 @@
-import { HomeContent } from '@/components/screens/HomeContent';
+import { redirect } from 'next/navigation';
 
 export default function HomePage() {
-  return <HomeContent />;
+  redirect('/feed');
 }
 
