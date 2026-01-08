@@ -26,6 +26,12 @@ export const metadata: Metadata = {
     description: 'Luxury Live Coin Streaming & Commerce',
     type: 'website',
   },
+  viewport: {
+    width: 'device-width',
+    initialScale: 1,
+    maximumScale: 1,
+    viewportFit: 'cover',
+  },
 };
 
 export default function RootLayout({
