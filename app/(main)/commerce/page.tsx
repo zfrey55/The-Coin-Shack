@@ -112,7 +112,7 @@ export default function CommercePage() {
           {/* External Links */}
           <div className="flex flex-wrap gap-3 justify-center pt-6">
             <LuxuryButton variant="outline" asChild>
-              <a href="https://whatnot.com" target="_blank" rel="noopener noreferrer">
+              <a href="https://whatnot.com/user/thecoinshack" target="_blank" rel="noopener noreferrer">
                 View on Whatnot
                 <ExternalLink className="w-4 h-4" />
               </a>

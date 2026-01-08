@@ -132,16 +132,16 @@ export function HomeContent() {
               </p>
               <div className="flex flex-wrap gap-3 justify-center md:justify-start">
                 <LuxuryButton variant="gold" shimmer asChild>
-                  <Link href="/commerce" target="_blank" rel="noopener noreferrer">
+                  <a href="https://shackpck.com" target="_blank" rel="noopener noreferrer">
                     Shop Now
                     <ExternalLink className="w-4 h-4" />
-                  </Link>
+                  </a>
                 </LuxuryButton>
                 <LuxuryButton variant="outline" asChild>
-                  <Link href="https://whatnot.com" target="_blank" rel="noopener noreferrer">
+                  <a href="https://whatnot.com/user/thecoinshack" target="_blank" rel="noopener noreferrer">
                     View on Whatnot
                     <ExternalLink className="w-4 h-4" />
-                  </Link>
+                  </a>
                 </LuxuryButton>
               </div>
             </div>
