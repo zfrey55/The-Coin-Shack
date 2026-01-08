@@ -30,11 +30,12 @@ export function StoryViewer({ story, allStories, onClose, onStoryUpdate }: Story
 
     // Mark as viewed
     if (onStoryUpdate && currentStory) {
-      onStoryUpdate({
+      const updatedStory = {
         ...currentStory,
         viewedBy: [...(currentStory.viewedBy || []), 'current-user'], // TODO: Use actual user ID
         views: (currentStory.views || 0) + 1,
-      });
+      };
+      onStoryUpdate(updatedStory);
     }
 
     // Progress bar animation (5 seconds)
@@ -49,7 +50,8 @@ export function StoryViewer({ story, allStories, onClose, onStoryUpdate }: Story
     }, 100);
 
     return () => clearInterval(interval);
-  }, [currentStoryIndex]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [currentStoryIndex, currentStory]);
 
   const handleNext = () => {
     if (currentStoryIndex < allStories.length - 1) {

@@ -109,5 +109,12 @@
   .dark .texture-overlay::before {
     background: linear-gradient(135deg, transparent 25%, rgba(212, 175, 55, 0.03) 25%, rgba(212, 175, 55, 0.03) 50%, transparent 50%, transparent 75%, rgba(212, 175, 55, 0.03) 75%);
   }
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
 }
 
