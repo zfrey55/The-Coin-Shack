@@ -151,6 +151,24 @@ export const createStream = async (stream: Omit<Stream, 'id'>): Promise<string> 
   return docRef.id;
 };
 
+export const updateStream = async (streamId: string, data: Partial<Stream>): Promise<void> => {
+  if (!isFirebaseEnabled() || !db) {
+    // For now, just update mock data in memory (will be replaced when Firebase is configured)
+    console.log('Updating stream (Firebase not configured):', streamId, data);
+    return;
+  }
+  try {
+    const updateData: any = { ...data };
+    if (updateData.startsAt) {
+      updateData.startsAt = toTimestamp(updateData.startsAt);
+    }
+    await updateDoc(doc(db, COLLECTIONS.streams, streamId), updateData);
+  } catch (error) {
+    console.error('Error updating stream:', error);
+    throw error;
+  }
+};
+
 // ============ Games ============
 export const getGames = async (): Promise<Game[]> => {
   if (!isFirebaseEnabled() || !db) {

@@ -11,6 +11,8 @@ const navItems = [
   { id: 'account', icon: User, label: 'Account', path: '/more' },
 ];
 
+// Add My Shows link for breakers - can be accessed via /more or direct link
+
 export function BottomNav() {
   const pathname = usePathname();
   const router = useRouter();

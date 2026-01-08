@@ -18,10 +18,20 @@ import {
   LogIn,
   LogOut,
   Crown,
+  Calendar,
 } from 'lucide-react';
+
+// Map user IDs to host IDs (breakers: Rari, Mike, Dom, Manu)
+const USER_TO_HOST_MAP: Record<string, string> = {
+  '1': '1', // Rari
+  '2': '2', // Mike
+  '3': '3', // Dom
+  '4': '4', // Manu
+};
 
 const menuItems = [
   { id: 'profile', icon: User, label: 'Edit Profile', path: '/profile' },
+  { id: 'my-shows', icon: Calendar, label: 'My Shows', path: '/my-shows', requiresBreaker: true },
   { id: 'notifications', icon: Bell, label: 'Notifications', path: '/notifications' },
   { id: 'settings', icon: Settings, label: 'Settings', path: '/settings' },
   { id: 'privacy', icon: Shield, label: 'Privacy', path: '/privacy' },
@@ -124,6 +134,12 @@ export function MoreContent() {
           {/* Menu Items */}
           <div className="space-y-2">
             {menuItems.map((item) => {
+              // Check if item requires breaker access
+              if (item.requiresBreaker) {
+                const isBreaker = user && USER_TO_HOST_MAP[user.id];
+                if (!isBreaker) return null; // Hide if not a breaker
+              }
+              
               const Icon = item.icon;
               return (
                 <LuxuryCard
