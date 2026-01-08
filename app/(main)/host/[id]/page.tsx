@@ -152,8 +152,3 @@ export default function HostPage() {
   );
 }
 
-  return <HostProfileContent hostId={hostId} />;
-}
-
-function HostProfileContent({ hostId }: { hostId: string }) {
-
