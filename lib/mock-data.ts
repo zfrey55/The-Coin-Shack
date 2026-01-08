@@ -1,4 +1,4 @@
-import { Host, Stream, Game, Product, Post, SpotPrice } from './types';
+import { Host, Stream, Game, Product, Post, SpotPrice, Story } from './types';
 
 export const mockHosts: Host[] = [
   { id: '1', name: 'Rari', avatar: 'https://images.unsplash.com/photo-1715423058726-ddea1ec51b66?w=200', isLive: true, bio: 'Professional coin dealer specializing in rare Morgan Dollars', followers: 12847 },
@@ -26,8 +26,46 @@ export const mockProducts: Product[] = [
 ];
 
 export const mockPosts: Post[] = [
-  { id: '1', authorId: '1', authorName: 'Rari', authorAvatar: mockHosts[0].avatar, authorIsVip: false, authorIsHost: true, content: 'Just got in an amazing Morgan Dollar collection! Going live in 30 minutes 🪙✨', image: 'https://images.unsplash.com/photo-1643393670577-b214e610c8f8?w=800', timestamp: new Date(Date.now() - 15 * 60000), likes: 48, comments: 12 },
-  { id: '2', authorId: 'user1', authorName: 'CoinCollector_Mike', authorAvatar: mockHosts[1].avatar, authorIsVip: true, authorIsHost: false, content: 'Just won an incredible 1921 Peace Dollar from Mike\'s stream! 🎉', timestamp: new Date(Date.now() - 60 * 60000), likes: 23, comments: 5 },
+  { id: '1', authorId: '1', authorName: 'Rari', authorAvatar: mockHosts[0].avatar, authorIsVip: false, authorIsHost: true, content: 'Just got in an amazing Morgan Dollar collection! Going live in 30 minutes 🪙✨', image: 'https://images.unsplash.com/photo-1643393670577-b214e610c8f8?w=800', timestamp: new Date(Date.now() - 15 * 60000), likes: 48, comments: 12, likedBy: [] },
+  { id: '2', authorId: 'user1', authorName: 'CoinCollector_Mike', authorAvatar: mockHosts[1].avatar, authorIsVip: true, authorIsHost: false, content: 'Just won an incredible 1921 Peace Dollar from Mike\'s stream! 🎉', timestamp: new Date(Date.now() - 60 * 60000), likes: 23, comments: 5, likedBy: [] },
+  { id: '3', authorId: '2', authorName: 'Mike', authorAvatar: mockHosts[1].avatar, authorIsVip: false, authorIsHost: true, content: 'Breaking open some premium silver rounds tonight! Who\'s joining? 🎲', timestamp: new Date(Date.now() - 120 * 60000), likes: 67, comments: 18, likedBy: [] },
+  { id: '4', authorId: 'user2', authorName: 'SilverStacker', authorAvatar: mockHosts[2].avatar, authorIsVip: false, authorIsHost: false, content: 'My latest pickup from the stream! These Morgan Dollars are absolutely gorgeous! 💎', image: 'https://images.unsplash.com/photo-1643393670577-b214e610c8f8?w=800', timestamp: new Date(Date.now() - 180 * 60000), likes: 34, comments: 8, likedBy: [] },
+];
+
+export const mockStories: Story[] = [
+  {
+    id: '1',
+    userId: '1',
+    userName: 'Rari',
+    userAvatar: mockHosts[0].avatar,
+    image: 'https://images.unsplash.com/photo-1643393670577-b214e610c8f8?w=800',
+    timestamp: new Date(Date.now() - 2 * 60 * 60 * 1000),
+    expiresAt: new Date(Date.now() + 22 * 60 * 60 * 1000),
+    views: 42,
+    viewedBy: [],
+  },
+  {
+    id: '2',
+    userId: '2',
+    userName: 'Mike',
+    userAvatar: mockHosts[1].avatar,
+    image: 'https://images.unsplash.com/photo-1745655604884-dd4fad590504?w=800',
+    timestamp: new Date(Date.now() - 5 * 60 * 60 * 1000),
+    expiresAt: new Date(Date.now() + 19 * 60 * 60 * 1000),
+    views: 28,
+    viewedBy: [],
+  },
+  {
+    id: '3',
+    userId: '3',
+    userName: 'Dom',
+    userAvatar: mockHosts[2].avatar,
+    image: 'https://images.unsplash.com/photo-1643393670577-b214e610c8f8?w=800',
+    timestamp: new Date(Date.now() - 1 * 60 * 60 * 1000),
+    expiresAt: new Date(Date.now() + 23 * 60 * 60 * 1000),
+    views: 15,
+    viewedBy: [],
+  },
 ];
 
 export const mockSpotPrices: SpotPrice[] = [
@@ -36,4 +74,3 @@ export const mockSpotPrices: SpotPrice[] = [
   { metal: 'Platinum', price: '$1,002', trend: 'up' },
   { metal: 'Palladium', price: '$1,002', trend: 'down' },
 ];
-

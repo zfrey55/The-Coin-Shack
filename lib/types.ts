@@ -65,6 +65,30 @@ export interface Post {
   timestamp: Date;
   likes: number;
   comments: number;
+  likedBy?: string[]; // Array of user IDs who liked
+}
+
+export interface Story {
+  id: string;
+  userId: string;
+  userName: string;
+  userAvatar: string;
+  image: string;
+  timestamp: Date;
+  expiresAt?: Date; // Stories expire after 24 hours
+  views?: number;
+  viewedBy?: string[]; // Array of user IDs who viewed
+}
+
+export interface Comment {
+  id: string;
+  postId: string;
+  authorId: string;
+  authorName: string;
+  authorAvatar: string;
+  content: string;
+  timestamp: Date;
+  likes?: number;
 }
 
 export interface SpotPrice {
