@@ -1,8 +1,6 @@
 'use client';
-import { use } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import Image from 'next/image';
-import { Suspense } from 'react';
 import { LuxuryCard } from '@/components/luxury/LuxuryCard';
 import { LuxuryBadge } from '@/components/luxury/LuxuryBadge';
 import { LuxuryButton } from '@/components/luxury/LuxuryButton';
@@ -12,7 +10,9 @@ import { useStore } from '@/lib/store';
 import { formatCurrency } from '@/lib/utils';
 import { Share2, Users, Calendar } from 'lucide-react';
 
-function HostProfileContent({ hostId }: { hostId: string }) {
+export default function HostPage() {
+  const params = useParams();
+  const hostId = params?.id as string;
   const router = useRouter();
   const { user, setUser } = useStore();
   const host = mockHosts.find(h => h.id === hostId);
@@ -152,12 +152,8 @@ function HostProfileContent({ hostId }: { hostId: string }) {
   );
 }
 
-export default function HostPage({ params }: { params: Promise<{ id: string }> }) {
-  const { id } = use(params);
-  return (
-    <Suspense fallback={<div className="container mx-auto px-4 py-12 text-center">Loading...</div>}>
-      <HostProfileContent hostId={id} />
-    </Suspense>
-  );
+  return <HostProfileContent hostId={hostId} />;
 }
+
+function HostProfileContent({ hostId }: { hostId: string }) {
 
